@@ -34,12 +34,13 @@ body {
 }
 
 .register-container {
-    width: 80%;
+    width: 100%;
     max-width: 400px;
     background-color: rgb(53 53 53 / 90%);
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 10px;
     opacity: 0.98;
 }
 
@@ -65,10 +66,10 @@ h2 {
 
 .input-group input {
     width: 100%;
-    padding: 10px;
+    padding: 14px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .input-group .icon {
@@ -81,12 +82,12 @@ h2 {
 
 .register-btn {
     width: 100%;
-    padding: 10px;
+    padding: 14px;
     background-color: #337ab7;
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -147,3 +148,53 @@ h2 {
     padding: 20px;
     text-align: center;
 }
+
+@media (max-width: 480px) {
+    .register-container {
+        width: 95%; /* More flexible width for very small screens */
+        padding: 15px; /* Less padding to fit better */
+    }
+
+    .input-group input {
+        font-size: 16px; /* Improve readability on mobile */
+        padding: 12px; /* Easier to tap */
+    }
+
+    .register-btn {
+        font-size: 16px; /* Larger tap target */
+        padding: 12px;
+    }
+
+    .validation-summary-errors {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 300px;
+        margin: 15px;
+        padding: 30px;
+    }
+}
+
+/* Large screens (unchanged) */
+@media (min-width: 1200px) {
+    .login-container {
+        width: 700px;
+        padding: 40px;
+        font-size: 18px;
+    }
+
+    .input-group input {
+        font-size: 18px;
+        padding: 14px;
+    }
+
+    .login-btn {
+        font-size: 18px;
+        padding: 14px;
+    }
+}
+
