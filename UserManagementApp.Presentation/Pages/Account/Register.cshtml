@@ -1,0 +1,55 @@
+@page
+@model UserManagementApp.Presentation.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+
+<head>
+    <title>Login - UserManagementApp</title>
+    <link href="@Url.Content("~/css/register.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/js/register.js")" type="text/javascript"></script>
+</head>
+
+<body>
+<video autoplay loop muted id="background-video">
+    <source src="https://videos.pexels.com/video-files/1851190/1851190-uhd_2560_1440_25fps.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<div class="background">
+    <div class="register-container">
+        <h2>Register</h2>
+        <form method="post" id="registerForm">
+            @if (ModelState.ErrorCount > 0)
+            {
+                <div asp-validation-summary="All" class="validation-summary-errors text-danger"></div>
+            }
+            <div class="input-group">
+                <label for="Name">Full Name</label>
+                <input type="text" asp-for="Input.Name" placeholder="Full Name" required />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label for="Email">Email ID</label>
+                <input type="email" asp-for="Input.Email" placeholder="Email ID" required />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label for="Password">Password</label>
+                <input type="password" asp-for="Input.Password" placeholder="Password" required />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label for="ConfirmPassword">Confirm Password</label>
+                <input type="password" asp-for="Input.ConfirmPassword" placeholder="Confirm Password" required />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="register-btn">Register</button>
+            <p class="login-link">Already have an account? <a href="/Account/Login">Login</a></p>
+        </form>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+<partial name="_ValidationScriptsPartial" />
+</body>

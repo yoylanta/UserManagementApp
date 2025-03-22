@@ -1,0 +1,150 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /*background-image: url('https://images.steamusercontent.com/ugc/2028345995466386300/1808C55A430B2C5CD48FB69FAE994B25A8612EC6/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true');*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.login-container {
+    width: 161%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #333;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.input-group label {
+    position: absolute;
+    top: -14px;
+    left: 8px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.input-group .icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+    margin-top: -16px;
+}
+
+.remember-me label {
+    font-size: 12px;
+    color: #666;
+}
+
+.remember-me a {
+    font-size: 12px;
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #286090;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+.register-link a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.validation-summary-errors {
+    font-size: 1.0rem;
+    color: red;
+    background-color: #f8d7da;
+    padding: 10px;
+    padding-left: 26px;
+    border: 1px solid #f5c6cb;
+    border-radius: 7px;
+    margin-bottom: 30px;
+}
+
+.background-video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Style the video to cover the entire background */
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* This makes sure the video covers the area */
+    z-index: -1;  /* Ensures the video stays in the background */
+}
+
+/* Style the content in the foreground */
+.content-container {
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}

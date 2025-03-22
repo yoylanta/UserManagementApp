@@ -1,0 +1,70 @@
+/* Custom styles */
+.toolbar button {
+    font-size: 14px;
+}
+
+.filter input {
+    width: 200px;
+}
+
+.user-checkbox {
+    margin-right: 10px;
+}
+
+.badge {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.bg-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.bg-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Optional: Sparkline for activity */
+.sparkline {
+    width: 150px;
+    height: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    position: relative;
+}
+
+.sparkline .bar {
+    display: inline-block;
+    height: 100%;
+    background-color: #17a2b8;
+    margin-right: 2px;
+}
+
+.current-user-row {
+    transition: all 0.3s ease !important;
+    background-color: #3498db !important; /* Cool blue background */
+    color: #fff !important; /* White text color */
+    border-left: 5px solid #f39c12 !important; /* Cool left border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important; /* Subtle shadow for depth */
+}
+
+.current-user-row.hovered {
+    background-color: #2980b9 !important; /* Darker blue on hover */
+}
+
+@keyframes glowAnimation {
+    0% {
+        box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12 !important ;
+    }
+    100% {
+        box-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12 !important;
+    }
+}
+
+.current-user-row.glowing {
+    animation: glowAnimation 1.5s infinite alternate !important;
+}
+

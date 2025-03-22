@@ -1,18 +1,16 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using UserManagementApp.Core.DTOs;
+using UserManagementApp.Core.Interfaces;
+using UserManagementApp.Core.Models.Identity;
 
 namespace UserManagementApp.Presentation.Pages;
 
-public class IndexModel : PageModel
+public class IndexModel(ILogger<IndexModel> logger, IUserService userService) : BasePageModel(userService)
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    public List<UserDto> Users { get; set; }
+    
+    public async Task OnGetAsync()
     {
-        _logger = logger;
-    }
-
-    public void OnGet()
-    {
+        await RedirectIfNotAuthenticated();
+        Users = await userService.GetAllUsersAsync();
     }
 }
