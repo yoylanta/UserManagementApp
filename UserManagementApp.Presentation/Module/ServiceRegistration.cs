@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using UserManagementApp.Core.Interfaces;
 using UserManagementApp.Core.Models.Identity;
 using UserManagementApp.Infrastructure.Repositories;
@@ -11,5 +12,6 @@ public static class ServiceRegistration
     {
         services.AddScoped<IEntityRepository<User>, EntityRepository<User>>();
         services.AddScoped<IUserService, UserService>();
+        services.AddTransient<IUserValidator<User>, CustomUserValidator>();
     }
 }

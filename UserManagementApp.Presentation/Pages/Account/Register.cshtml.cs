@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using UserManagementApp.Core.Interfaces;
 using UserManagementApp.Core.Models.Identity;
 
@@ -61,23 +63,38 @@ namespace UserManagementApp.Presentation.Pages.Account
                     RegistrationTime = DateTime.UtcNow
                 };
 
-                var result = await userManager.CreateAsync(user, Input.Password);
-
-                if (result.Succeeded)
+                try
                 {
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToPage("/Account/Login");
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    string errorMessage = error.Description;
-                    if (errorMessage.Contains("Username"))
+                    var result = await userManager.CreateAsync(user, Input.Password);
+                    if (result.Succeeded)
                     {
-                        errorMessage = errorMessage.Replace("Username", "Email");
+                        await signInManager.SignInAsync(user, isPersistent: false);
+                        return RedirectToPage("/Account/Login");
                     }
 
-                    ModelState.AddModelError(string.Empty, errorMessage);                }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+                catch (DbUpdateException ex)
+                {
+                    if (ex.InnerException is PostgresException postgresEx && postgresEx.SqlState == "23505")
+                    {
+                        if (postgresEx.ConstraintName == "IX_AspNetUsers_Email")
+                        {
+                            ModelState.AddModelError(string.Empty, $"A user with this email ({Input.Email}) already exists.");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "An unexpected error occurred while saving data.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, "An unexpected error occurred while creating user.");
+                }
             }
 
             // If we got this far, something failed, redisplay form
